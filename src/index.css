@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060607;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272730;
+  border-radius: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5a880;
+}
+
+/* Glassmorphic utilities */
+.glass-panel {
+  background: rgba(18, 18, 21, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(24, 24, 29, 0.85);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.7), 0 0 20px -2px rgba(212, 175, 55, 0.15);
+}
+
+.glass-nav {
+  background: rgba(8, 8, 10, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+/* Luxury Gold Text Gradient */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF6D6 0%, #E5C07B 40%, #D4AF37 70%, #9F7824 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-text-subtle {
+  background: linear-gradient(135deg, #F3E7C4 0%, #C5A880 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button Shimmer Effect */
+.btn-gold-luxury {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #EAD8A4 0%, #D4AF37 50%, #B88E28 100%);
+  color: #0c0c0e;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.35s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+}
+
+.btn-gold-luxury:hover {
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-gold-luxury::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: rotate(25deg) translateY(-100%);
+  transition: transform 0.75s ease-in-out;
+}
+
+.btn-gold-luxury:hover::after {
+  transform: rotate(25deg) translateY(100%);
+}
+
+/* Subtle ember particles / decorative glows */
+.glow-amber-radial {
+  background: radial-gradient(circle, rgba(224, 90, 43, 0.15) 0%, rgba(212, 175, 55, 0.05) 50%, transparent 70%);
+}
+
+/* ==========================================================================
+   Mobile Responsive Fixes (< 768px)
+   KEEP DESKTOP EXACTLY THE SAME: Only applied inside max-width: 768px block
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* ---------------------------------------------------------
+     FIX 1: Wine Vault Card Removed from Project
+     --------------------------------------------------------- */
+  .wine-vault-card,
+  .wine-vault-image-container,
+  .wine-vault-image,
+  img[alt="The Grand Cru Wine Vault"],
+  [data-card="wine-vault"] {
+    display: none !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* ---------------------------------------------------------
+     Hide the yellow play button completely on mobile (< 768px):
+     (Set display: none for the play icon inside the mobile media query).
+     Keeps the background image of the restaurant visible so it
+     just looks like a nice static image card without overlapping text.
+     --------------------------------------------------------- */
+  .play-icon,
+  .yellow-play-button,
+  .video-play-btn,
+  .video-play-button,
+  .play-btn,
+  .play-button,
+  .play-button-wrapper,
+  .video-play-wrapper,
+  button[aria-label="Play Grill It Cinematic Story"] {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+
+  .video-card-container {
+    cursor: default;
+  }
+
+  /* Completely disable/hide the video popup modal on mobile */
+  .video-modal-overlay,
+  .modal-overlay,
+  .popup-modal,
+  .video-modal,
+  .modal,
+  .video-popup {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+
+  /* ---------------------------------------------------------
+     Hero Buttons Mobile Layout Fix (< 768px):
+     'EXPLORE MENU' and 'RESERVE A TABLE' buttons stack on top of
+     each other (flex-direction: column) with 100% width and a small gap,
+     fitting perfectly inside the phone screen without getting cut off.
+     Ensure button text doesn't wrap awkwardly and icons stay aligned.
+     --------------------------------------------------------- */
+  .hero-cta-container,
+  .hero-buttons-container,
+  .hero-buttons {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 90vw !important;
+    gap: 0.75rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .hero-btn,
+  .hero-btn-menu,
+  .hero-btn-reserve,
+  .hero-cta-container a,
+  .hero-cta-container button,
+  .hero-buttons-container a,
+  .hero-buttons-container button,
+  .hero-buttons a,
+  .hero-buttons button {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-btn svg,
+  .hero-btn-menu svg,
+  .hero-btn-reserve svg {
+    flex-shrink: 0 !important;
+  }
+
+  /* ---------------------------------------------------------
+     FIX 2: Cinematic Video Popup on Mobile
+     Popup modal is position: fixed; top: 0; left: 0;
+     width: 100vw; height: 100vh; display: flex;
+     align-items: center; justify-content: center;
+     Not draggable or movable at all.
+     --------------------------------------------------------- */
+  .video-modal-overlay,
+  .modal-overlay,
+  .popup-modal,
+  .video-modal,
+  .modal,
+  .video-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: none;
+    overflow: hidden;
+    z-index: 9998;
+  }
+
+  .video-modal-dialog,
+  .video-modal-window,
+  .popup-modal-content,
+  .modal-dialog,
+  .modal-content {
+    position: relative;
+    width: 95vw !important;
+    max-width: 95vw !important;
+    margin: auto !important;
+    transform: none !important;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  .video-container,
+  .modal-video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+  }
+
+  /* ---------------------------------------------------------
+     The close (X) button must be:
+     position: absolute; top: 10px; right: 10px; z-index: 9999;
+     --------------------------------------------------------- */
+  .video-close-btn,
+  .video-close-button,
+  .close-btn,
+  .close-button,
+  .modal-close-btn,
+  .modal-close-button,
+  button[aria-label="Close video"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  /* ---------------------------------------------------------
+     Text overlays inside the video popup ('4K Master Cut', 'Executive Chef...', etc.)
+     EXTREMELY small on mobile (font-size: 10px; padding: 4px;),
+     looking like tiny subtitles so the video is fully visible.
+     --------------------------------------------------------- */
+  .video-overlay-badge,
+  .video-watermark-badge,
+  .video-badge,
+  .video-text-box,
+  .video-info-box,
+  .modal-text-box,
+  .video-caption-box,
+  .video-overlay-caption,
+  .video-overlay-text {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .video-overlay-badge,
+  .video-watermark-badge {
+    position: absolute !important;
+    top: 6px !important;
+    left: 6px !important;
+    font-size: 10px !important;
+    padding: 4px !important;
+    gap: 4px !important;
+  }
+
+  .video-text-box,
+  .video-info-box,
+  .modal-text-box,
+  .video-caption-box,
+  .video-overlay-caption {
+    position: absolute !important;
+    bottom: 6px !important;
+    left: 6px !important;
+    right: 6px !important;
+    font-size: 10px !important;
+    padding: 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 2px !important;
+    border-radius: 6px !important;
+    background: rgba(10, 10, 12, 0.75) !important;
+  }
+
+  .video-overlay-badge *,
+  .video-watermark-badge *,
+  .video-badge *,
+  .video-text-box *,
+  .video-info-box *,
+  .modal-text-box *,
+  .video-caption-box *,
+  .video-overlay-caption *,
+  .video-overlay-text * {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+
+  .video-text-box svg,
+  .video-info-box svg,
+  .modal-text-box svg {
+    width: 10px !important;
+    height: 10px !important;
+  }
+}
+
+
